@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-
+  img = input.required<string>()
+  price = input.required<number>()
+  title = input.required<string>()
+  //img = 'https://picsum.photos/640/640?r=' + Math.random()
 }
