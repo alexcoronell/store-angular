@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output, computed } from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -11,5 +11,12 @@ export class ProductComponent {
   img = input.required<string>()
   price = input.required<number>()
   title = input.required<string>()
-  //img = 'https://picsum.photos/640/640?r=' + Math.random()
+  addToCart = output<string>()
+  image = computed(() => this.img() + Math.random())
+
+  addToCartHandler() {
+    console.log('click from child')
+    this.addToCart.emit('Hola, este es un mensaje desde el hijo')
+  }
+  
 }
