@@ -1,15 +1,15 @@
 import { Component, signal, inject, OnInit } from '@angular/core';
 
 /* Components */
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { ProductComponent } from '../../components/product/product.component';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { ProductComponent } from '@products/components/product/product.component';
 
 /* Services */
-import { ProductService } from '../../../shared/services/product.service';
-import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
+import { CartService } from '@shared/services/cart.service';
 
 /* Models */
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-list',
@@ -35,7 +35,7 @@ export class ListComponent implements OnInit {
     this.productService.getProducts().subscribe({
       next: (products) => {
         this.products.set(products)
-        console.log(products)
+        
       },
       error: e => console.error(e)
     })

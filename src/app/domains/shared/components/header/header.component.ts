@@ -5,7 +5,7 @@ import { CurrencyPipe } from '@angular/common';
 import { CartProductComponent } from '../cart-product/cart-product.component';
 
 /* Services */
-import { CartService } from '../../services/cart.service';
+import { CartService } from '@shared/services/cart.service';
 
 @Component({
   selector: 'app-header',

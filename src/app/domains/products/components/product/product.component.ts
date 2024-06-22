@@ -1,12 +1,16 @@
 import { Component, input, output } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '@shared/models/product.model';
+
+/* Pipes */
+import { ReversePipe } from '@shared/pipes/reverse.pipe';
+import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CommonModule, ReversePipe, TimeAgoPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -14,6 +18,7 @@ export class ProductComponent {
   product = input.required<Product>()
   addToCart = output<Product>()
   randomImage = 'https://picsum.photos/640/640?r='+Math.random()
+  date: Date = new Date()
 
   addToCartHandler() {
     this.addToCart.emit(this.product())
