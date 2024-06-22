@@ -12,4 +12,5 @@ import { Product } from '../../models/product.model';
 })
 export class CartProductComponent {
   product = input.required<Product>()
+  randomImage = 'https://picsum.photos/640/640?r='+Math.random()
 }

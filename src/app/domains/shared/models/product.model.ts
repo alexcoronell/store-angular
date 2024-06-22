@@ -1,7 +1,11 @@
+import { Category
+
+ } from "./category.model";
 export interface Product {
   id: number;
   title: string;
-  image: string;
   price: number;
-  creationAt: string;
+  description: string
+  category: Category
+  images: string[];
 }

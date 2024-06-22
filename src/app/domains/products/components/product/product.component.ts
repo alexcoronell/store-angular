@@ -13,7 +13,7 @@ import { Product } from '../../../shared/models/product.model';
 export class ProductComponent {
   product = input.required<Product>()
   addToCart = output<Product>()
-  //image = computed(() => this.img() + Math.random())
+  randomImage = 'https://picsum.photos/640/640?r='+Math.random()
 
   addToCartHandler() {
     this.addToCart.emit(this.product())
