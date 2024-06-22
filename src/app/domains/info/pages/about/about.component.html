@@ -1,0 +1,29 @@
+<!-- <p>
+    <label for="duration">Duration</label>
+    <input type="number" name="duration" [value]="duration()" (change)="changeDuration($event)">
+</p>
+
+<p class="mb-10">
+    <label for="Message">Message</label>
+    <input type="text" name="message" [value]="message()" (change)="changeMessage($event)">
+</p>
+<p>
+    @if (duration() > 0) {
+        <app-counter [duration]="duration()" [message]="message()" />
+    }
+</p> -->
+
+<div class="px-10">
+  <h1 class="text-lg font-bold">About Us</h1>
+  <p class="text-sm">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus natus
+    provident dolorem voluptatum fugiat laudantium vero consectetur nostrum quod
+    aliquam dolor nesciunt ipsam eos nulla repellat molestias temporibus, autem
+    ipsum.
+  </p>
+  <p class="text-sm">número de clientes:</p>
+  <app-counter [duration]="duration()" [message]="message()" />
+  <div>
+    <app-wave-audio [audioUrl]="audioUrl" />
+  </div>
+</div>

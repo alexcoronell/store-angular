@@ -1,4 +1,6 @@
-import { Component, input, output, computed } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+
+import { Product } from '../../../shared/models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -8,11 +10,9 @@ import { Component, input, output, computed } from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-  img = input.required<string>()
-  price = input.required<number>()
-  title = input.required<string>()
+  product = input.required<Product>()
   addToCart = output<string>()
-  image = computed(() => this.img() + Math.random())
+  //image = computed(() => this.img() + Math.random())
 
   addToCartHandler() {
     console.log('click from child')
