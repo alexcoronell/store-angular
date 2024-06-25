@@ -4,20 +4,20 @@
       <img
         alt="ecommerce"
         class="w-full object-cover object-center"
-        [src]="randomImages()[currentImage()]"
+        [src]="cover()"
       />
     </div>
     <div class="flex items-center justify-center mt-1">
       <div class="grid grid-cols-3 gap-1">
-        @for (image of randomImages(); track $index) {
-            <img
-            alt="ecommerce"
-            class="object-cover object-center rounded border-2 border-gray-200"
-            [src]="image"
-            (click)="loadImage($index)"
-            [class.border-red-400]="currentImage() === $index"
-          />
-        }
+        @for (image of product()?.images; track $index) {
+          <img
+          alt="ecommerce"
+          class="object-cover object-center rounded border-2 border-gray-200"
+          [src]="image"
+          (click)="changeCover(image)"
+          [class.border-red-400]="image === cover()"
+        />
+      }
       </div>
     </div>
   </div>

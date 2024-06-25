@@ -17,8 +17,7 @@ export class ProductDetailComponent implements OnInit {
   private cartService = inject(CartService);
   id = input.required<string>();
   product = signal<Product | null>(null);
-  randomImages = signal<string[]>([]);
-  currentImage = signal<number>(0);
+  cover = signal<string>('');
 
   ngOnInit(): void {
     if (this.id()) {
@@ -29,26 +28,18 @@ export class ProductDetailComponent implements OnInit {
 
   getProduct(id: Product['id']) {
     this.productService.getOne(id).subscribe({
-      next: (res) => {
-        this.product.set(res);
-        this.generateImages();
+      next: (product) => {
+        this.product.set(product);
+        if(product.images.length > 0) {
+          this.cover.set(product.images[0])
+        }
       },
       error: (e) => console.error(e),
     });
   }
 
-  generateImages() {
-    const quantity = this.product()?.images.length;
-    if (quantity) {
-      for (let i = 0; i < quantity; i++) {
-        const randomImage = 'https://picsum.photos/640/640?r=' + Math.random();
-        this.randomImages.update((prevState) => [...prevState, randomImage]);
-      }
-    }
-  }
-
-  loadImage(index: number) {
-    this.currentImage.set(index);
+  changeCover(newImage: string) {
+    this.cover.set(newImage)
   }
 
   addToCart() {
