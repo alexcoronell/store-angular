@@ -4,7 +4,6 @@ import { LayoutComponent } from '@shared/components/layout/layout.component';
 
 import { ListComponent } from '@products/pages/list/list.component';
 import { ProductDetailComponent } from '@products/pages/product-detail/product-detail.component';
-import { AboutComponent } from '@info/pages/about/about.component';
 import { NotFoundComponent } from '@info/pages/not-found/not-found.component';
 
 export const routes: Routes = [
@@ -12,10 +11,26 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', component: ListComponent },
-      { path: 'product/:id', component: ProductDetailComponent},
-      { path: 'about', component: AboutComponent },
-    ]
+      {
+        path: '',
+        loadComponent: () =>
+          import('./domains/products/pages/list/list.component').then(
+            (c) => c.ListComponent
+          ),
+      },
+      {
+        path: 'product/:id',
+        loadComponent: () =>
+          import(
+            './domains/products/pages/product-detail/product-detail.component'
+          ).then((c) => c.ProductDetailComponent),
+      },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./domains/info/pages/about/about.component'),
+      },
+    ],
   },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];

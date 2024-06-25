@@ -17,7 +17,7 @@ import { HighlightDirective } from '@shared/directives/highlight.directive';
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })
-export class AboutComponent {
+export default class AboutComponent {
   duration = signal(10);
   message = signal('Hello');
   audioUrl = 'assets/audio.mp3';
